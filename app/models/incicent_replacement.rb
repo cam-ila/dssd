@@ -1,0 +1,2 @@
+class IncicentReplacement < ApplicationRecord
+end

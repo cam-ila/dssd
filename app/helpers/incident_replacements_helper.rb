@@ -1,0 +1,2 @@
+module IncidentReplacementsHelper
+end

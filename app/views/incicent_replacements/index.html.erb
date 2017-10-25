@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Incicent Replacements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @incicent_replacements.each do |incicent_replacement| %>
+      <tr>
+        <td><%= incicent_replacement.description %></td>
+        <td><%= incicent_replacement.amount %></td>
+        <td><%= link_to 'Show', incicent_replacement %></td>
+        <td><%= link_to 'Edit', edit_incicent_replacement_path(incicent_replacement) %></td>
+        <td><%= link_to 'Destroy', incicent_replacement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Incicent Replacement', new_incicent_replacement_path %>

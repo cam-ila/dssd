@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @replacement.name %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @replacement.amount %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @replacement.description %>
+</p>
+
+<%= link_to 'Edit', edit_replacement_path(@replacement) %> |
+<%= link_to 'Back', replacements_path %>
