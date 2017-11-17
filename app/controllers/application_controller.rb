@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
   protect_from_forgery with: :exception
   
   # Overwriting the sign_out redirect path method

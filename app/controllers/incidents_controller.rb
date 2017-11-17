@@ -1,4 +1,5 @@
 class IncidentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_incident, only: [:show, :edit, :update, :destroy]
 
   # HOST_NAME = 'xps.local'
@@ -10,7 +11,7 @@ class IncidentsController < ApplicationController
   # GET /incidents
   # GET /incidents.json
   def index
-    @incidents = Incident.all
+    @incidents = current_user.incidents
   end
 
   # GET /incidents/1
@@ -32,6 +33,7 @@ class IncidentsController < ApplicationController
   # POST /incidents.json
   def create
     @incident = Incident.create(incident_params)
+    @incident.update(user: current_user)
 
     respond_to do |format|
       if @incident.save
@@ -68,11 +70,12 @@ class IncidentsController < ApplicationController
           redirect_to @incident, notice: 'Incident was successfully created.'
         }
       else
-        format.html { render :new }
+        format.html { render :index }
       end
     end
 
-
+  rescue Faraday::ConnectionFailed => e
+          redirect_to @incident, notice: 'Fallo la comunicacion con Bonita BPM'
   end
 
   # PATCH/PUT /incidents/1

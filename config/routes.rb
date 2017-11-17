@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
   devise_for :users
 
-  root to: "incidents#index"
+  root to: "home#index"
   resources :incident_replacements
   resources :incicent_replacements
   resources :replacements

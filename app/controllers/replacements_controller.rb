@@ -1,4 +1,5 @@
 class ReplacementsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_replacement, only: [:show, :edit, :update, :destroy]
 
   # GET /replacements
