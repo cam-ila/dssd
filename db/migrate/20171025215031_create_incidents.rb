@@ -5,7 +5,7 @@ class CreateIncidents < ActiveRecord::Migration[5.0]
       t.date :date
       t.string :incident_type
       t.text :description
-      t.string :iincident_state
+      t.string :incident_state
 
       t.timestamps
     end
