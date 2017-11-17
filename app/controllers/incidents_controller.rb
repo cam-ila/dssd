@@ -1,6 +1,12 @@
 class IncidentsController < ApplicationController
   before_action :set_incident, only: [:show, :edit, :update, :destroy]
 
+  # HOST_NAME = 'xps.local'
+  # PORT = '37130'
+
+  HOST_NAME = 'localhost'
+  PORT = '8080'
+
   # GET /incidents
   # GET /incidents.json
   def index
@@ -14,8 +20,8 @@ class IncidentsController < ApplicationController
 
   # GET /incidents/new
   def new
-    @incident = Incident.create
-    @incident.replacements.build
+    @incident = Incident.new
+    # @incident.replacements.build
   end
 
   # GET /incidents/1/edit
@@ -29,13 +35,44 @@ class IncidentsController < ApplicationController
 
     respond_to do |format|
       if @incident.save
-        format.html { redirect_to @incident, notice: 'Incident was successfully created.' }
-        format.json { render :show, status: :created, location: @incident }
+        format.html { 
+          client = Bonita::Client.new(username: "starter", password: "1234", url: "http://#{HOST_NAME}:#{PORT}")
+          client.login
+
+          # get process id
+          response = client.connection.get "http://#{HOST_NAME}:#{PORT}/bonita/API/bpm/process?c=10&p=0"
+          if response.status == 200
+            parsed_response = JSON.parse(response.body)
+            puts "Respuesta de procesos: #{parsed_response}"
+            process_id = parsed_response.first["id"]
+            puts "Id de proceso a iniciar: #{process_id}"
+            puts "Id de incidente a iniciar: #{@incident.id}"
+
+            init_response = client.connection.post "http://#{HOST_NAME}:#{PORT}/bonita/API/bpm/case" do |req|
+              req.headers['Content-Type'] = 'application/json'
+              hash_body =  {
+                "processDefinitionId":"#{process_id}",
+                "variables": [
+                  { 
+                    "name":"incidentId", 
+                    "value":"#{@incident.id}" 
+                  }
+                ]
+              }
+              req.body = hash_body.to_json 
+            end
+            puts "Inicio de proceso: estado de respuesta: #{init_response.status}"
+          end
+          client.logout
+
+          redirect_to @incident, notice: 'Incident was successfully created.'
+        }
       else
         format.html { render :new }
-        format.json { render json: @incident.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # PATCH/PUT /incidents/1

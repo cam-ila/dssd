@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
+
+  root to: "incidents#index"
   resources :incident_replacements
   resources :incicent_replacements
   resources :replacements

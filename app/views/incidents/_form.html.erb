@@ -4,40 +4,49 @@
       <h2><%= pluralize(incident.errors.count, "error") %> prohibited this incident from being saved:</h2>
 
       <ul>
-      <% incident.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% incident.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :client_number %>
-    <%= f.number_field :client_number %>
+  <div class="card">
+    <div class="card-body">
+      <div class="field">
+        <%= f.label :client_number %>
+        <%= f.number_field :client_number %>
+      </div>
+
+      <div class="field">
+        <%= f.label :incident_type %>
+        <%= f.text_field :incident_type %>
+      </div>
+
+      <div class="field">
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+      </div>
+
+      <div class="field">
+        <%= f.label :state %>
+        <%= f.text_field :state %>
+      </div>
+
+      <div class="replacements">
+        <%= f.fields_for :replacements do |replacement| %>
+          <%= render 'replacement_fields',  f: replacement %>
+        <% end %>
+        <div class="links">
+          <%= link_to_add_association 'agregar repuesto', f, :replacements, class: 'btn btn-success'%>
+        </div>
+
+      </div>
+
+      <div class="actions">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :incident_type %>
-    <%= f.text_field :incident_type %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :state %>
-    <%= f.text_field :state %>
-  </div>
-
-  <%= f.fields_for :replacements do |replacement| %>
-    <p>
-    Repuesto: <%= replacement.text_field :name %>
-  </p>
-<% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

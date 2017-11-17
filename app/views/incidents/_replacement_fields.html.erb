@@ -1,0 +1,22 @@
+<div class="nested-fields">
+  <div class="card">
+    <div class="card-body">
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :amount %>
+        <%= f.number_field :amount %>
+      </div>
+
+      <div class="field">
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+      </div>
+      <%= link_to_remove_association "- repuesto", f %>
+    </div>
+  </div>
+</div>
+
