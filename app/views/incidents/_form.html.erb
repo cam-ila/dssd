@@ -10,43 +10,41 @@
       </ul>
     </div>
   <% end %>
+  <p></p>
+  <form>
+    <div class="form-group">
+      <%= f.label :client_number %>
+      <%= f.number_field :client_number, class: 'form-control'%>
+    </div>
 
-  <div class="card">
-    <div class="card-body">
-      <div class="field">
-        <%= f.label :client_number %>
-        <%= f.number_field :client_number %>
-      </div>
+    <div class="form-group">
+      <%= f.label :incident_type %>
+      <%= f.text_field :incident_type , class: 'form-control'%>
+    </div>
 
-      <div class="field">
-        <%= f.label :incident_type %>
-        <%= f.text_field :incident_type %>
-      </div>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description , class: 'form-control'%>
+    </div>
 
-      <div class="field">
-        <%= f.label :description %>
-        <%= f.text_area :description %>
-      </div>
+    <div class="form-group">
+      <%= f.label :incident_state %>
+      <%= f.text_field :incident_state , class: 'form-control'%>
+    </div>
 
-      <div class="field">
-        <%= f.label :incident_state %>
-        <%= f.text_field :incident_state %>
-      </div>
 
-      <div class="replacements">
-        <%= f.fields_for :replacements do |replacement| %>
-          <%= render 'replacement_fields',  f: replacement %>
-        <% end %>
-        <div class="links">
-          <%= link_to_add_association 'agregar repuesto', f, :replacements, class: 'btn btn-success'%>
-        </div>
-
-      </div>
-
-      <div class="actions">
-        <%= f.submit class: "btn btn-primary" %>
+    <p></p>
+    <div class="replacements">
+      <%= f.fields_for :replacements do |replacement| %>
+        <%= render 'replacement_fields',  f: replacement %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association 'agregar repuesto', f, :replacements, class: 'btn btn-light'%>
       </div>
     </div>
-  </div>
-
+    <p></p>
+    <div class="actions">
+      <%= f.submit class: "btn btn-info" %>
+    </div>
+  </form>
 <% end %>
