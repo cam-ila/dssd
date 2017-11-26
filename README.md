@@ -1,24 +1,27 @@
-# README
+To install:
+ 
+Download the repo
+```
+git clone https://github.com/cam-ila/dssd
+cd dssd
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Install bundler and gems
+```
+gem install bundler
+bundle install
+```
 
-Things you may want to cover:
+Edit the *config/database.yml* file to configure your mysql username and password
 
-* Ruby version
+Then:
+```
+rake db:setup
+rake db:migrate
+```
 
-* System dependencies
+Start sever:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rails s -p 3000
+```
