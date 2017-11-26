@@ -25,3 +25,6 @@ Start sever:
 ```
 rails s -p 3000
 ```
+
+Open in you browser:
+[Link to your APP](http://localhost:3000)
