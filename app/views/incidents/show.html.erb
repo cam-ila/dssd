@@ -1,24 +1,39 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Client number:</strong>
-  <%= @incident.client_number %>
-</p>
-
-<p>
-  <strong>Incident type:</strong>
-  <%= @incident.incident_type %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @incident.description %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @incident.incident_state %>
-</p>
-
-<%= link_to 'Edit', edit_incident_path(@incident) %> |
-<%= link_to 'Back', incidents_path %>
+<div class= "container">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<p id="notice"><%= notice %></p>
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<th scope="row">Client number:</th>
+						<td>
+							<%= @incident.client_number %>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">Incident type:</th>
+						<td>
+							<%= @incident.incident_type %>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">Description:</th>
+						<td>
+							<%= @incident.description %>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">State:</th>
+						<td>
+							<%= @incident.incident_state %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<%= link_to 'Edit', edit_incident_path(@incident), class:'btn btn-light' %> |
+			<%= link_to 'Back', incidents_path, class:'btn btn-black' %>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+</div>
