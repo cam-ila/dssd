@@ -3,14 +3,14 @@
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<p id="notice"><%= notice %></p>
-			<h1 class="text-center">Incidents</h1>
+			<h1 class="text-center">Incidentes</h1>
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th scope="col">Client number</th>
-						<th scope="col">Incident type</th>
-						<th scope="col">Description</th>
-						<th scope="col">State</th>
+						<th scope="col">Numero de cliente</th>
+						<th scope="col">Tipo de incidente</th>
+						<th scope="col">Descripcion</th>
+						<th scope="col">Estado</th>
 						<th colspan="3"></th>
 					</tr>
 				</thead>
@@ -22,9 +22,9 @@
 							<td><%= incident.incident_type %></td>
 							<td><%= incident.description %></td>
 							<td><%= incident.incident_state %></td>
-							<td><%= link_to 'Show', incident %></td>
-							<td><%= link_to 'Edit', edit_incident_path(incident) %></td>
-							<td><%= link_to 'Destroy', incident, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+							<td><%= link_to 'Ver', incident %></td>
+							<td><%= link_to 'Editar', edit_incident_path(incident) %></td>
+							<td><%= link_to 'Eliminar', incident, method: :delete, data: { confirm: 'Esta seguro que desea eliminar el incidente?' } %></td>
 						</tr>
 					<% end %>
 				</tbody>
@@ -32,7 +32,7 @@
 
 			<br>
 
-			<%= link_to 'New Incident', new_incident_path, class:'btn btn-light' %>
+			<%= link_to 'Nuevo incidente', new_incident_path, class:'btn btn-light' %>
 		</div>
 		<div class="col-md-2"></div>
 	</div>

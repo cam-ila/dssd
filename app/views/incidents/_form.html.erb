@@ -13,22 +13,22 @@
   <p></p>
   <form>
     <div class="form-group">
-      <%= f.label :client_number %>
+      <%= f.label :client_number, "Numero de Cliente" %>
       <%= f.number_field :client_number, class: 'form-control'%>
     </div>
 
     <div class="form-group">
-      <%= f.label :incident_type %>
+      <%= f.label :incident_type, "Tipo de Incidente" %>
       <%= f.text_field :incident_type , class: 'form-control'%>
     </div>
 
     <div class="form-group">
-      <%= f.label :description %>
+      <%= f.label :description, "Descripcion" %>
       <%= f.text_area :description , class: 'form-control'%>
     </div>
 
     <div class="form-group">
-      <%= f.label :incident_state %>
+      <%= f.label :incident_state, "Estado" %>
       <%= f.text_field :incident_state , class: 'form-control'%>
     </div>
 
@@ -39,12 +39,12 @@
         <%= render 'replacement_fields',  f: replacement %>
       <% end %>
       <div class="links">
-        <%= link_to_add_association 'agregar repuesto', f, :replacements, class: 'btn btn-light'%>
+        <%= link_to_add_association 'Agregar repuesto', f, :replacements, class: 'btn btn-light'%>
       </div>
     </div>
     <p></p>
     <div class="actions">
-      <%= f.submit class: "btn btn-info" %>
+      <%= f.submit 'Crear Incidente', class: "btn btn-info" %>
     </div>
   </form>
 <% end %>

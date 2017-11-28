@@ -6,33 +6,33 @@
 			<table class="table table-striped">
 				<tbody>
 					<tr>
-						<th scope="row">Client number:</th>
+						<th scope="row">Numero de Cliente:</th>
 						<td>
 							<%= @incident.client_number %>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">Incident type:</th>
+						<th scope="row">Tipo de Incidente:</th>
 						<td>
 							<%= @incident.incident_type %>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">Description:</th>
+						<th scope="row">Descripcion:</th>
 						<td>
 							<%= @incident.description %>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">State:</th>
+						<th scope="row">Estado:</th>
 						<td>
 							<%= @incident.incident_state %>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-			<%= link_to 'Edit', edit_incident_path(@incident), class:'btn btn-light' %> |
-			<%= link_to 'Back', incidents_path, class:'btn btn-black' %>
+			<%= link_to 'Editar', edit_incident_path(@incident), class:'btn btn-light' %> |
+			<%= link_to 'Volver', incidents_path, class:'btn btn-black' %>
 		</div>
 		<div class="col-md-3"></div>
 	</div>
